@@ -1,2 +1,2 @@
 # Spring4MvcVelocityJPA
-Spring Mvc Velocity JPA PostGreSQL
+Spring4Mvc Velocity JPA PostGreSQL
