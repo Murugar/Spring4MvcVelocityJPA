@@ -1,0 +1,111 @@
+<html>
+<script>
+var nextRaceDate = $nextRaceDate
+var nextRaceLocation = $nextRaceLocation
+</script>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<meta http-equiv="content-language" content="hu">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./resources/js/jquery_popup.js"></script>
+<script src="./resources/js/timeUntilNextRace.js"></script>
+<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+	<title>F1 Manager</title>
+</head>
+<body>
+<div class = "all">
+
+	<table class = "top" style="width:100%">
+		<tr style="height:80%">
+			#if($nextRaceLocation != "notNextRace")
+				<td colspan="2" > <font size="10" color = "green">$nextRaceLocation</font>
+			  	<font size="5" color = "green" id="nextRaceTime"></font>  </td>
+			#else
+				<td colspan="2" > <font size="10" color = "green">Nincs kovetkezo futam</font>
+			  	<font size="5" color = "green"> </font>  </td>
+			#end
+			
+			<td><a href="?locale=hu"><img src="./resources/img/hunFlag.png" width = "50px"></img></a><a href="?locale=en"><img src="./resources/img/gbFlag.jpg" width = "50px"></img></a></td>
+			<td colspan="2"> 
+				#if( $successLogin == "" && $notSuccessLogin == "")  ##alapeset
+					<font id="onclick">Login</font> <font id="onclickSignup">Signup</font>
+					#if($successSignup == "successSignup")
+						<font color="red">sikeres regisztracio</font>
+					#end
+					#if($notSuccessSignup == "notSuccessSignup")
+					<font color="red">mar van ilyen user, sry</font>
+					#end
+				#end
+				#if ($successLogin == "successLogin") ##sikeres belepes
+					Hi $userName, <a id="logoutclick" href="/SpringMvcVelocityJPA/logout">logout</a>
+				#end
+				#if ($notSuccessLogin == "alreadyLoggedin") ##mar bevan loggolva, nincs multiloggolas
+					Hello megint $userName,<a id="logoutclick" href="/SpringMvcVelocityJPA/logout">logout</a>
+				#end
+				#if ($notSuccessLogin == "notSuccessLogin") ##nincs ilyen user
+					<font id="onclick">Login</font> <font id="onclickSignup">Signup</font><font color="red">nincs ilyen user,vagy rossz jelszo</font>
+				#end
+			</td> 
+			
+			
+			
+		</tr>
+		<tr>
+			<td class = "menu"><b><a class = "menuLink" href="welcome">#springMessageText("message.homePage" "Home")</a></b></td>
+			<td class = "menu"><b><a class = "menuLink" href="profile">#springMessageText("message.profilePage" "Profile")</a></b></td>
+			<td class = "menu"><b><a class = "menuLink" href="drivers">#springMessageText("message.driversPage" "Drivers")</a></b></td>
+			<td class = "menu"><b><a class = "menuLink" href="teams">#springMessageText("message.teamsPage" "Teams")</a></b></td>
+		</tr>
+	</table>
+	
+	<div id="main">
+	#if($successLogin == "successLogin")
+		<p><font color = "red" size ="10">Udv az oldalon $userName</font></p>
+		<p><font color = "black" size ="30">A jatek lenyeg a kovetkezo................................</font></p>
+	#else
+		<p><font color = "red" size ="10">Udv az oldalon, jelentkezz vagy regisztralj be ma</font></p>
+		<p><font color = "black" size ="30">A jatek lenyeg a kovetkezo................................</font></p>
+	#end
+	</div>
+	
+                
+               
+	
+	
+	<!--Contact Form -->
+        <div id="contactdiv">
+            <form class="form" action = "/SpringMvcVelocityJPA/login" method="get" id="contact">
+                <img src="./resources/button_cancel.png" class="img" id="cancel"/>	
+                <h3>Login</h3>
+                <hr/><br/>
+                <label>Name: </label>
+                <br/>
+                <input type="text" id="username" name="nameOfUser" placeholder="Name"/><br/>      
+                <input type="password" id="passwordLogin" name="passwordOfUser" placeholder="Password"/><br/>       
+                <input type="submit" id="login" value="Login"/>
+                <input type="button" id="cancel" value="Cancel"/>
+                <br/>
+            </form>
+        </div>
+        
+        <!--Signup Form -->
+        <div id="signupdiv">
+            <form class="form" action = "/SpringMvcVelocityJPA/signup" method="get" id="register">
+                <img src="./resources/button_cancel.png" class="img" id="cancel"/>	
+                <h3>Signup</h3>
+                <hr/><br/>
+                <label>Name: </label>
+                <br/>
+                <input type="text" id="yourname" name="nameOfUser" placeholder="Name"/><br/> 
+                 <input type="password" id="passwordSignup" name="passwordOfUser" placeholder="Password"/><br/>          
+                <input type="submit" id="signup" value="Signup"/>
+                <input type="button" id="cancel" value="Cancel"/>
+                <br/>
+            </form>
+        </div>
+	
+</div>
+
+</body>
+</html>

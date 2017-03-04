@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>
+	Spring Mvc Velocity JPA
+</h1>
+
+<P>  The time on the server isd $asd. </P>
+<a href="?locale=hu">magyar</a><a href="?locale=en">english</a>
+<p>#springMessageText("message.title" "hi")</p>
+<a href="/SpringMvcVelocityJPA/addDriversTeamsToRace">add DriversTeams to Race </a></br>
+<a href="/SpringMvcVelocityJPA/addTeamDriverRace">add TeamDriverRace </a></br>
+<a href="/SpringMvcVelocityJPA/sizeOfLists">size of lists </a></br>
+</body>
+</html>

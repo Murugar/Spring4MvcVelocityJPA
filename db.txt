@@ -1,0 +1,28 @@
+Db
+
+users:  id
+		name
+		money
+		drivers
+		teams
+		points
+
+drivers: id
+		 name
+		 price
+		 points
+ 
+teams:   id
+		 name
+		 drivers
+		 points
+
+races:   id
+		 date
+		 users
+		 re
+		 
+leagues:  id
+		  name
+		  drivers
+
